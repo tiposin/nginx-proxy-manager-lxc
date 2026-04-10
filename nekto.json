@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "dns": {
+    "servers": [
+      {
+        "tag": "remote",
+        "address": "https://8.8.8.8/dns-query",
+        "address_resolver": "local"
+      },
+      {
+        "tag": "domestic",
+        "address": "https://77.88.8.8/dns-query",
+        "address_resolver": "local"
+      }
+    ],
+    "rules": [
+      {
+        "geosite": [
+          "private",
+          "category-ru",
+          "whitelist",
+          "microsoft",
+          "apple",
+          "google-play",
+          "epicgames",
+          "riot",
+          "escapefromtarkov",
+          "steam",
+          "origin",
+          "twitch",
+          "pinterest",
+          "faceit"
+        ],
+        "server": "domestic"
+      },
+      {
+        "server": "remote"
+      }
+    ],
+    "strategy": "ipv4_only"
+  },
+  "route": {
+    "geosite": {
+      "path": "geosite.dat",
+      "download_url": "https://cdn.jsdelivr.net/gh/hydraponique/roscomvpn-geosite@202603251836/release/geosite.dat"
+    },
+    "geoip": {
+      "path": "geoip.dat",
+      "download_url": "https://cdn.jsdelivr.net/gh/hydraponique/roscomvpn-geoip@202604100532/release/geoip.dat"
+    },
+    "rules": [
+      {
+        "geosite": [
+          "win-spy",
+          "torrent",
+          "category-ads"
+        ],
+        "outbound": "block"
+      },
+      {
+        "geoip": [
+          "private",
+          "direct"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "geosite": [
+          "private",
+          "category-ru",
+          "whitelist",
+          "microsoft",
+          "apple",
+          "google-play",
+          "epicgames",
+          "riot",
+          "escapefromtarkov",
+          "steam",
+          "origin",
+          "twitch",
+          "pinterest",
+          "faceit"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "geosite": [
+          "github",
+          "twitch-ads",
+          "youtube",
+          "telegram"
+        ],
+        "outbound": "proxy"
+      }
+    ],
+    "final": "proxy"
+  }
+}
